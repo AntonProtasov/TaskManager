@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="TaskManager.TaskListCotrol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:taskManagerControls="clr-namespace:TaskManagerControls"
+             xmlns:taskManagerConverters="clr-namespace:TaskManager.Converters"
+             mc:Ignorable="d" 
+             xmlns:taskManager="clr-namespace:TaskManager"
+             d:DataContext="{d:DesignInstance Type=taskManager:TaskManagerVM, IsDesignTimeCreatable=False}">
+
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/ResourceDictionary.xaml"/>
+                <ResourceDictionary>
+                    <taskManagerConverters:BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border BorderThickness="0, 1, 0, 0" BorderBrush="{StaticResource BorderColor}">
+        <Grid HorizontalAlignment="Stretch" Width="Auto">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                <ListBox Background="{StaticResource TaskListBackground}"
+                     Height="Auto"
+                     ItemsSource="{Binding TaskList}"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Stretch"
+                     SelectedItem="{Binding SelectedTask}"
+                     Width="Auto">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Background" Value="{StaticResource TaskItemColor}" />
+                            <Setter Property="Margin" Value="4, 0, 4, 0" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Background="{StaticResource TaskItemColor}">
+                                <Label Content="{Binding Title}"
+                                       Foreground="{StaticResource TaskInfoForeground}"
+                                       FontSize="{StaticResource DefaultFontSize}"
+                                       Margin="4, 4, 4, 4">
+                                    <taskManagerControls:RightContentService.RightContent>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label HorizontalAlignment="Left"
+                                                   Margin="0, -8, 14, 0"
+                                                   Content="{Binding DataContext.Progress, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   ContentStringFormat=" {0}%"
+                                                   FontSize="{StaticResource DefaultFontSize}"/>
+
+                                            <Button Style="{StaticResource CloseButtonStyle}"
+                                                    Grid.Column="1"
+                                                    Command="{Binding CloseCommand}"
+                                                    HorizontalAlignment="Right"
+                                                    Visibility="{Binding DataContext.IsCompleted, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibilityConverter}}"/>
+                                        </Grid>
+                                    </taskManagerControls:RightContentService.RightContent>
+                                </Label>
+
+                                <ProgressBar Margin="4, 4, 4, 4" Height="4" Background="{StaticResource TaskListBackground}" Minimum="0" Maximum="100" Value="{Binding Progress}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>

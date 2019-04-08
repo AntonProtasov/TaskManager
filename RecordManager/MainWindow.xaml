@@ -1,0 +1,52 @@
+﻿<Window x:Class="TaskManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:taskManager="clr-namespace:TaskManager"
+        d:DataContext="{d:DesignInstance Type=taskManager:TaskManagerVM, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="Resources/ResourceDictionary.xaml"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" 
+               Grid.Column="0"
+               Background="{StaticResource TaskListBackground}"
+               HorizontalAlignment="Stretch"
+               HorizontalContentAlignment="Left"
+               FontSize="{StaticResource DefaultFontSize}"  
+               Padding="30, 0, 0, 0"
+               VerticalContentAlignment="Center"
+               Content="СПИСОК ЗАДАЧ:"
+               Width="Auto"/>
+
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Background="{StaticResource TaskCreationBackground}"
+               HorizontalAlignment="Stretch"
+               HorizontalContentAlignment="Center"
+               FontSize="{StaticResource DefaultFontSize}"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               Content="СОЗДАНИЕ ЗАДАЧИ:"/>
+
+        <taskManager:TaskListCotrol Grid.Row="1"
+                                    Grid.Column="0"
+                                    Background="{StaticResource TaskListBackground}"/>
+
+        <taskManager:TaskCreationControl Grid.Row="1"
+                                         Grid.Column="1"
+                                         Background="{StaticResource TaskCreationBackground}"/>
+    </Grid>
+</Window>

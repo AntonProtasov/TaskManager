@@ -1,0 +1,14 @@
+C:\Projects\RecordManager\RecordManager\obj\Debug\MainWindow.baml
+C:\Projects\RecordManager\RecordManager\obj\Debug\MainWindow.g.cs
+C:\Projects\RecordManager\RecordManager\obj\Debug\App.g.cs
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager_MarkupCompile.cache
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.g.resources
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.Properties.Resources.resources
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.csproj.GenerateResource.cache
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.csproj.CoreCompileInputs.cache
+C:\Projects\RecordManager\RecordManager\bin\Debug\RecordManager.exe.config
+C:\Projects\RecordManager\RecordManager\bin\Debug\RecordManager.exe
+C:\Projects\RecordManager\RecordManager\bin\Debug\RecordManager.pdb
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.exe
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.pdb
+C:\Projects\RecordManager\RecordManager\obj\Debug\RecordManager.csprojAssemblyReference.cache
